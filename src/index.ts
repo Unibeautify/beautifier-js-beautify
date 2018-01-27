@@ -2,54 +2,28 @@ import * as jsbeautify from "js-beautify";
 import { Beautifier, Language } from "unibeautify";
 import { wrapBeautifier, AtomPackage } from "unibeautify-beautifier";
 
+import options from "./options";
 const beautifyJS = jsbeautify.js;
 const beautifyHTML = jsbeautify.html;
 const beautifyCSS = jsbeautify.css;
-
 const pkg = require("../package.json");
 
 export const beautifier: Beautifier = {
   name: "JS-Beautify",
   options: {
-    _: {
-      indent_size: true,
-      indent_char: true,
-      // eol: true,
-      preserve_newlines: true,
-      // unindent_chained_methods: true,
-      break_chained_methods: true,
-      max_preserve_newlines: true,
-      space_in_paren: true,
-      // space_in_empty_paren: true,
-      // jslint_happy: true,
-      space_after_anon_function: true,
-      keep_array_indentation: true,
-      space_before_conditional: true,
-      unescape_strings: true,
-      wrap_line_length: true,
-      // e4x: true,
-      end_with_newline: true
-      // comma_first: true,
-      // operator_position: true,
-    },
-    HTML: true,
-    XML: true,
-    Handlebars: true,
-    Mustache: true,
-    JavaScript: true,
-    Liquid: true,
-    EJS: true,
-    JSX: true,
-    JSON: true,
-    CSS: {
-      indent_size: true,
-      indent_char: true,
-      selector_separator_newline: true,
-      newline_between_rules: true,
-      preserve_newlines: true,
-      wrap_line_length: true,
-      end_with_newline: true
-    }
+    // HTML
+    HTML: options.HTML,
+    XML: options.HTML,
+    Handlebars: options.HTML,
+    Mustache: options.HTML,
+    Liquid: options.HTML,
+    // JavaScript
+    JavaScript: options.JavaScript,
+    EJS: options.JavaScript,
+    JSX: options.JavaScript,
+    JSON: options.JavaScript,
+    // CSS
+    CSS: options.CSS
   },
   beautify(data) {
     return new Promise((resolve, reject) => {
