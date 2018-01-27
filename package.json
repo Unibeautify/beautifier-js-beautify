@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "JS-Beautify beautifier for Unibeautify",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "tsc",
