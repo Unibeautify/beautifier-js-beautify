@@ -1,0 +1,41 @@
+{
+  "name": "@unibeautify/beautifier-js-beautify",
+  "version": "0.1.0",
+  "description": "JS-Beautify beautifier for Unibeautify",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "build": "tsc",
+    "ava": "ava --verbose",
+    "test": "npm run ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unibeautify/beautifier-js-beautify.git"
+  },
+  "keywords": [
+    "js-beautify",
+    "beautifier",
+    "unibeautify"
+  ],
+  "author": "Glavin Wiechert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Unibeautify/beautifier-js-beautify/issues"
+  },
+  "homepage": "https://github.com/Unibeautify/beautifier-js-beautify#readme",
+  "dependencies": {
+    "js-beautify": "^1.7.5",
+    "unibeautify-beautifier": "^0.1.3"
+  },
+  "devDependencies": {
+    "@types/js-beautify": "0.0.31",
+    "@types/node": "^9.4.0",
+    "ava": "^0.25.0",
+    "typescript": "^2.6.2",
+    "unibeautify": "^0.3.0"
+  },
+  "peerDependencies": {
+    "unibeautify": "^0.3.0"
+  }
+}
