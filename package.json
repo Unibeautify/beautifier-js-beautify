@@ -34,9 +34,9 @@
     "@types/node": "^9.4.0",
     "ava": "^0.25.0",
     "typescript": "^2.6.2",
-    "unibeautify": "^0.3.0"
+    "unibeautify": "^0.4.0"
   },
   "peerDependencies": {
-    "unibeautify": "^0.3.0"
+    "unibeautify": "^0.4.0"
   }
 }
