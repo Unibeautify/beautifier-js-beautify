@@ -1,6 +1,6 @@
 {
   "name": "@unibeautify/beautifier-js-beautify",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "JS-Beautify beautifier for Unibeautify",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
