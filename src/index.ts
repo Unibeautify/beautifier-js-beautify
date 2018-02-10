@@ -1,6 +1,5 @@
 import * as jsbeautify from "js-beautify";
 import { Beautifier, Language } from "unibeautify";
-import { wrapBeautifier, AtomPackage } from "unibeautify-beautifier";
 
 import options from "./options";
 const beautifyJS = jsbeautify.js;
@@ -10,6 +9,7 @@ const pkg = require("../package.json");
 
 export const beautifier: Beautifier = {
   name: "JS-Beautify",
+  package: pkg,
   options: {
     // HTML
     HTML: options.HTML,
@@ -60,12 +60,4 @@ export const beautifier: Beautifier = {
   }
 };
 
-const config = {};
-
-const wrappedBeautifier: Beautifier | AtomPackage = wrapBeautifier(
-  pkg,
-  beautifier,
-  config
-);
-export { Beautifier, AtomPackage };
-export default wrappedBeautifier;
+export default beautifier;
