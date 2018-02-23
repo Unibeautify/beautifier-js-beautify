@@ -1,5 +1,5 @@
 import * as jsbeautify from "js-beautify";
-import { Beautifier, Language } from "unibeautify";
+import { Beautifier, Language, BeautifierBeautifyData } from "unibeautify";
 
 import options from "./options";
 const beautifyJS = jsbeautify.js;
@@ -25,7 +25,7 @@ export const beautifier: Beautifier = {
     // CSS
     CSS: options.CSS
   },
-  beautify(data) {
+  beautify(data: BeautifierBeautifyData) {
     return new Promise((resolve, reject) => {
       const { language, options, text } = data;
       try {

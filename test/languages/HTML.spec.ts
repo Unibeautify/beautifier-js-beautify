@@ -1,18 +1,10 @@
-import test from "ava";
 import { newUnibeautify, Beautifier } from "unibeautify";
-import beautifier from "../../dist";
-
-test.beforeEach(t => {
-  t.context.unibeautify = newUnibeautify();
-});
-
-test("should successfully beautify HTML text", t => {
-  const { unibeautify } = t.context;
+import beautifier from "../../src";
+test("should successfully beautify HTML text", () => {
+  const unibeautify = newUnibeautify();
   unibeautify.loadBeautifier(beautifier);
-
   const text = `<div>\n<span>Hello</span>\n<span>World</span>\n</div>`;
   const beautifierResult = `<div>\n  <span>Hello</span>\n  <span>World</span>\n</div>`;
-
   return unibeautify
     .beautify({
       languageName: "HTML",
@@ -25,7 +17,6 @@ test("should successfully beautify HTML text", t => {
       text
     })
     .then(results => {
-      t.is(results, beautifierResult);
+      expect(results).toBe(beautifierResult);
     });
 });
-

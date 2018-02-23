@@ -1,15 +1,8 @@
-import test from "ava";
 import { newUnibeautify, Beautifier } from "unibeautify";
-import beautifier from "../../dist";
-
-test.beforeEach(t => {
-  t.context.unibeautify = newUnibeautify();
-});
-
-test("should successfully beautify JSX text", t => {
-  const { unibeautify } = t.context;
+import beautifier from "../../src";
+test("should successfully beautify JSX text", () => {
+  const unibeautify = newUnibeautify();
   unibeautify.loadBeautifier(beautifier);
-
   const text = `export default class TestCase extends React.Component {
     render() {
       return ( <div className={this.props.className} someAttr>
@@ -24,7 +17,6 @@ test("should successfully beautify JSX text", t => {
       </div>);
   }
 }`;
-
   return unibeautify
     .beautify({
       languageName: "JSX",
@@ -37,14 +29,12 @@ test("should successfully beautify JSX text", t => {
       text
     })
     .then(results => {
-      t.is(results, beautifierResult);
+      expect(results).toBe(beautifierResult);
     });
 });
-
-test("should successfully beautify JSX text with wrap_line_length", t => {
-  const { unibeautify } = t.context;
+test("should successfully beautify JSX text with wrap_line_length", () => {
+  const unibeautify = newUnibeautify();
   unibeautify.loadBeautifier(beautifier);
-
   const text = `export default class TestCase extends React.Component {
     render() {
       return ( <div className={this.props.className} someAttr>
@@ -62,7 +52,6 @@ test("should successfully beautify JSX text with wrap_line_length", t => {
       );
     }
   }`;
-
   return unibeautify
     .beautify({
       languageName: "JSX",
@@ -76,6 +65,6 @@ test("should successfully beautify JSX text with wrap_line_length", t => {
       text
     })
     .then(results => {
-      t.is(results, beautifierResult);
+      expect(results).toBe(beautifierResult);
     });
 });
