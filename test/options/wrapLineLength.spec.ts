@@ -1,19 +1,13 @@
-import test from "ava";
-import { newUnibeautify, Beautifier } from "unibeautify";
-import beautifier from "../../dist";
-
-test.beforeEach(t => {
-  t.context.unibeautify = newUnibeautify();
-});
-
+import { newUnibeautify, Beautifier, Unibeautify } from "unibeautify";
+import beautifier from "../../src";
 testWithWrapLineLength(12);
 testWithWrapLineLength(20);
 testWithWrapLineLength(80);
 testWithWrapLineLength(120);
 
-function testWithWrapLineLength(wrapLineLength) {
-  test(`should successfully beautify JavaScript text with wrap_line_length=${wrapLineLength}`, t => {
-    const { unibeautify } = t.context;
+function testWithWrapLineLength(wrapLineLength: number) {
+  test(`should successfully beautify JavaScript text with wrap_line_length=${wrapLineLength}`, () => {
+    const unibeautify = newUnibeautify();
     unibeautify.loadBeautifier(beautifier);
 
     const shortString = "c";
@@ -31,16 +25,15 @@ function testWithWrapLineLength(wrapLineLength) {
     const indentSize = 2;
     return Promise.all([
       beautifyWithPrintWidth(unibeautify, shortText, wrapLineLength).then(results => {
-        t.is(results, shortBeautifierResult, "Short text should not wrap");
+        expect(results).toBe(shortBeautifierResult);
       }),
       beautifyWithPrintWidth(unibeautify, longText, wrapLineLength).then(results => {
-        t.is(results, longBeautifierResult, "Long text should wrap");
+        expect(results).toBe(longBeautifierResult);
       })
     ]);
   });
 }
-
-function beautifyWithPrintWidth(unibeautify, text, printWidth) {
+function beautifyWithPrintWidth(unibeautify: Unibeautify, text: string, printWidth: number) {
   const indentSize = 2;
   return unibeautify.beautify({
     languageName: "JavaScript",
