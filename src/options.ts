@@ -32,7 +32,16 @@ const options: BeautifierOptions = {
   },
   HTML: {
     indent_size: true,
-    indent_char: "indent_style",
+    indent_char: [
+      ["indent_style"],
+      (options): string | undefined => {
+        if (options.indent_style === "tab") {
+          return "\t";
+        } else if (options.indent_style === "space") {
+          return " ";
+        }
+      }
+    ],
     brace_style: true,
     indent_inner_html: true,
     wrap_line_length: true,
@@ -48,7 +57,16 @@ const options: BeautifierOptions = {
   },
   CSS: {
     indent_size: true,
-    indent_char: "indent_style",
+    indent_char: [
+      ["indent_style"],
+      (options): string | undefined => {
+        if (options.indent_style === "tab") {
+          return "\t";
+        } else if (options.indent_style === "space") {
+          return " ";
+        }
+      }
+    ],
     selector_separator_newline: true,
     newline_between_rules: true,
     preserve_newlines: true,
