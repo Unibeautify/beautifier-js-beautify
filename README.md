@@ -1,5 +1,7 @@
 # beautifier-js-beautify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Unibeautify/beautifier-js-beautify.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/Unibeautify/beautifier-js-beautify.svg?branch=master)](https://travis-ci.org/Unibeautify/beautifier-js-beautify) [![Test Coverage](https://api.codeclimate.com/v1/badges/76eae700c26c64e0621d/test_coverage)](https://codeclimate.com/github/Unibeautify/beautifier-js-beautify/test_coverage)
 
 > JS-Beautify beautifier for Unibeautify
