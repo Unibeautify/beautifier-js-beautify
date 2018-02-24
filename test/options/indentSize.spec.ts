@@ -21,7 +21,7 @@ ${indentation}return n + 1;
         languageName: "JavaScript",
         options: {
           JavaScript: {
-            indent_char: indentChar,
+            indent_style: indentChar,
             indent_size: indentSize,
           }
         },

@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Unibeautify/beautifier-js-beautify#readme",
   "peerDependencies": {
     "js-beautify": "^1.7.5",
-    "unibeautify": "^0.7.0"
+    "unibeautify": "^0.8.0"
   },
   "devDependencies": {
     "@types/js-beautify": "0.0.31",
@@ -43,6 +43,6 @@
     "tslint": "^5.7.0",
     "tslint-clean-code": "^0.2.3",
     "tslint-microsoft-contrib": "^5.0.1",
-    "unibeautify": "^0.7.0"
+    "unibeautify": "^0.8.0"
   }
 }

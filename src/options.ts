@@ -2,7 +2,7 @@ import { BeautifierOptions } from "unibeautify";
 const options: BeautifierOptions = {
   JavaScript: {
     indent_size: true,
-    indent_char: true,
+    indent_char: "indent_style",
     brace_style: true,
     // eol: true,
     preserve_newlines: true,
@@ -23,7 +23,7 @@ const options: BeautifierOptions = {
   },
   HTML: {
     indent_size: true,
-    indent_char: true,
+    indent_char: "indent_style",
     brace_style: true,
     indent_inner_html: true,
     wrap_line_length: true,
@@ -39,7 +39,7 @@ const options: BeautifierOptions = {
   },
   CSS: {
     indent_size: true,
-    indent_char: true,
+    indent_char: "indent_style",
     selector_separator_newline: true,
     newline_between_rules: true,
     preserve_newlines: true,
