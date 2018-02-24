@@ -2,7 +2,16 @@ import { BeautifierOptions } from "unibeautify";
 const options: BeautifierOptions = {
   JavaScript: {
     indent_size: true,
-    indent_char: "indent_style",
+    indent_char: [
+      ["indent_style"],
+      (options): string | undefined => {
+        if (options.indent_style === "tab") {
+          return "\t";
+        } else if (options.indent_style === "space") {
+          return " ";
+        }
+      }
+    ],
     brace_style: true,
     // eol: true,
     preserve_newlines: true,
