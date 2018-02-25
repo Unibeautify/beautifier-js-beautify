@@ -11,6 +11,7 @@ function testWithIndentSize(indentSize: number, useTabs: boolean = false) {
     const unibeautify = newUnibeautify();
     unibeautify.loadBeautifier(beautifier);
     const indentChar = useTabs ? "\t" : " ";
+    const indentStyle = useTabs ? "tab" : "space";
     const indentation = useTabs ? "\t" : indentChar.repeat(indentSize);
     const text = `function test(n){return n+1;}`;
     const beautifierResult = `function test(n) {
@@ -21,7 +22,7 @@ ${indentation}return n + 1;
         languageName: "JavaScript",
         options: {
           JavaScript: {
-            indent_char: indentChar,
+            indent_style: indentStyle,
             indent_size: indentSize,
           }
         },

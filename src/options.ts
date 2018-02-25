@@ -1,8 +1,20 @@
-import { BeautifierOptions } from "unibeautify";
+import { BeautifierOptions, OptionValues, BeautifierLanguageOptions } from "unibeautify";
+const commonOptions: BeautifierLanguageOptions = {
+  indent_char: [
+    ["indent_style"],
+    (options: OptionValues): string | undefined => {
+      if (options.indent_style === "tab") {
+        return "\t";
+      } else if (options.indent_style === "space") {
+        return " ";
+      }
+    }
+  ]
+};
 const options: BeautifierOptions = {
   JavaScript: {
+    ...commonOptions,
     indent_size: true,
-    indent_char: true,
     brace_style: true,
     // eol: true,
     preserve_newlines: true,
@@ -22,8 +34,8 @@ const options: BeautifierOptions = {
     keep_function_indentation: true,
   },
   HTML: {
+    ...commonOptions,
     indent_size: true,
-    indent_char: true,
     brace_style: true,
     indent_inner_html: true,
     wrap_line_length: true,
@@ -38,8 +50,8 @@ const options: BeautifierOptions = {
     wrap_attributes_indent_size: true,
   },
   CSS: {
+    ...commonOptions,
     indent_size: true,
-    indent_char: true,
     selector_separator_newline: true,
     newline_between_rules: true,
     preserve_newlines: true,
