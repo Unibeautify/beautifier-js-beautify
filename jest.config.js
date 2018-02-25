@@ -7,5 +7,6 @@ module.exports = {
   testRegex: "test/.+\\.(test|spec)\\.ts$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   collectCoverage: true,
-  coverageReporters: ["json", "lcov", "text", "html"]
+  coverageReporters: ["json", "lcov", "text", "html"],
+  coveragePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"]
 };
