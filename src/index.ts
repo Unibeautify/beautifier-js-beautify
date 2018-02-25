@@ -49,7 +49,7 @@ export const beautifier: Beautifier = {
           case "CSS":
             return resolve(beautifyCSS(text, options));
           default:
-            return reject(
+            throw (
               new Error("Unknown language for JS Beautify: " + language)
             );
         }
