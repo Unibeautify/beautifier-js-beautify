@@ -8,5 +8,5 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   collectCoverage: true,
   coverageReporters: ["json", "lcov", "text", "html"],
-  mapCoverage: true
+  coveragePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"]
 };

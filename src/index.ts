@@ -1,11 +1,13 @@
 import * as jsbeautify from "js-beautify";
 import { Beautifier, Language, BeautifierBeautifyData } from "unibeautify";
+import * as readPkgUp from "read-pkg-up";
 
 import options from "./options";
 const beautifyJS = jsbeautify.js;
 const beautifyHTML = jsbeautify.html;
 const beautifyCSS = jsbeautify.css;
-const pkg = require("../package.json");
+
+const { pkg } = readPkgUp.sync({ cwd: __dirname });
 
 export const beautifier: Beautifier = {
   name: "JS-Beautify",
@@ -49,7 +51,7 @@ export const beautifier: Beautifier = {
           case "CSS":
             return resolve(beautifyCSS(text, options));
           default:
-            return reject(
+            throw (
               new Error("Unknown language for JS Beautify: " + language)
             );
         }
