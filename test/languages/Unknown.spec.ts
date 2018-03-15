@@ -7,6 +7,7 @@ test(`should fail as an unknown language to JS Beautify`, () => {
     extensions: ["test"],
     name: "TestLanguage",
     namespace: "test",
+    since: "0.0.1",
     sublimeSyntaxes: [],
     vscodeLanguages: []
   };
