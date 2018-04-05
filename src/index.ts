@@ -1,17 +1,25 @@
-import * as jsbeautify from "js-beautify";
-import { Beautifier, Language, BeautifierBeautifyData } from "unibeautify";
+import { js_beautify, html_beautify, css_beautify } from "js-beautify";
+import { Beautifier, Language, BeautifierBeautifyData, DependencyType, NodeDependency } from "unibeautify";
 import * as readPkgUp from "read-pkg-up";
-
 import options from "./options";
-const beautifyJS = jsbeautify.js;
-const beautifyHTML = jsbeautify.html;
-const beautifyCSS = jsbeautify.css;
-
 const { pkg } = readPkgUp.sync({ cwd: __dirname });
+
+interface JSBeautify {
+  js_beautify(js_source_text: string, options?: JsBeautifyOptions): string;
+  css_beautify(js_source_text: string, options?: CSSBeautifyOptions): string;
+  html_beautify(js_source_text: string, options?: HTMLBeautifyOptions): string;
+}
 
 export const beautifier: Beautifier = {
   name: "JS-Beautify",
   package: pkg,
+  dependencies: [
+    {
+      type: DependencyType.Node,
+      name: "JS Beautify",
+      package: "js-beautify",
+    }
+  ],
   options: {
     // HTML
     HTML: options.HTML,
@@ -27,29 +35,29 @@ export const beautifier: Beautifier = {
     // CSS
     CSS: options.CSS
   },
-  beautify(data: BeautifierBeautifyData) {
+  beautify({ text, options, language, dependencies }: BeautifierBeautifyData) {
     return new Promise((resolve, reject) => {
-      const { language, options, text } = data;
+      const jsbeautify: JSBeautify = dependencies.get<NodeDependency>("JS Beautify").package;
       try {
         switch (language.name) {
           case "JSON":
           case "JavaScript":
-            return resolve(beautifyJS(text, options));
+            return resolve(jsbeautify.js_beautify(text, options));
           case "JSX":
             options.e4x = true;
             options.es4 = true;
-            return resolve(beautifyJS(text, options));
+            return resolve(jsbeautify.js_beautify(text, options));
           case "Handlebars":
           case "Mustache":
             options.indent_handlebars = true;
-            return resolve(beautifyHTML(text, options));
+            return resolve(jsbeautify.html_beautify(text, options));
           case "EJS":
           case "Liquid":
           case "HTML":
           case "XML":
-            return resolve(beautifyHTML(text, options));
+            return resolve(jsbeautify.html_beautify(text, options));
           case "CSS":
-            return resolve(beautifyCSS(text, options));
+            return resolve(jsbeautify.css_beautify(text, options));
           default:
             throw (
               new Error("Unknown language for JS Beautify: " + language)
