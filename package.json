@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/jest": "23.1.4",
     "@types/js-beautify": "0.0.31",
-    "@types/node": "10.5.1",
+    "@types/node": "10.5.2",
     "@types/read-pkg-up": "3.0.1",
     "jest": "23.3.0",
     "js-beautify": "1.7.5",
