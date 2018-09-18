@@ -9,9 +9,13 @@ const commonOptions: BeautifierLanguageOptions = {
         return " ";
       }
     }
-  ]
+  ],
 };
 const options: BeautifierOptions = {
+  JSON: {
+    ...commonOptions,
+    indent_size: true,
+  },
   JavaScript: {
     ...commonOptions,
     indent_size: true,

@@ -31,7 +31,8 @@ export const beautifier: Beautifier = {
     JavaScript: options.JavaScript,
     EJS: options.JavaScript,
     JSX: options.JavaScript,
-    JSON: options.JavaScript,
+    JSON: options.JSON,
+    JSON5: options.JSON,
     // CSS
     CSS: options.CSS
   },
@@ -41,6 +42,7 @@ export const beautifier: Beautifier = {
       try {
         switch (language.name) {
           case "JSON":
+          case "JSON5":
           case "JavaScript":
             return resolve(jsbeautify.js_beautify(text, options));
           case "JSX":
