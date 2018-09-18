@@ -22,7 +22,11 @@ const options: BeautifierOptions = {
     brace_style: true,
     // eol: true,
     preserve_newlines: true,
-    unindent_chained_methods: true,
+    unindent_chained_methods: [
+      ["indent_chained_methods"],
+      ({ indent_chained_methods: val }) =>
+        (val === true) ? false : ((val === false) ? true : val)
+    ],
     break_chained_methods: true,
     max_preserve_newlines: true,
     space_in_paren: true,
