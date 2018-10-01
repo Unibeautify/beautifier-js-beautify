@@ -2,12 +2,13 @@ import { newUnibeautify, Beautifier } from "unibeautify";
 import beautifier from "../../src";
 // testWithIndentSize(0, true);
 testWithIndentSize(1, true);
-// testWithIndentSize(2, true);
-// testWithIndentSize(0, false);
+// testWithIndentSize(2, true); testWithIndentSize(0, false);
 testWithIndentSize(2, false);
 testWithIndentSize(4, false);
 function testWithIndentSize(indentSize: number, useTabs: boolean = false) {
-  test(`should successfully beautify JavaScript text with indent_size=${indentSize} using ${useTabs ? "tabs" : "spaces"}`, () => {
+  test(`should successfully beautify JavaScript text with indent_size=${indentSize} using ${
+    useTabs ? "tabs" : "spaces"
+  }`, () => {
     const unibeautify = newUnibeautify();
     unibeautify.loadBeautifier(beautifier);
     const indentChar = useTabs ? "\t" : " ";
@@ -24,9 +25,9 @@ ${indentation}return n + 1;
           JavaScript: {
             indent_style: indentStyle,
             indent_size: indentSize,
-          }
+          },
         },
-        text
+        text,
       })
       .then(results => {
         expect(results).toBe(beautifierResult);

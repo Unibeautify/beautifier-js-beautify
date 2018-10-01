@@ -17,23 +17,35 @@ function testWithWrapLineLength(wrapLineLength: number) {
     const shortBeautifierResult = shortText;
 
     if (shortText.length > wrapLineLength) {
-      throw new Error(`Test text will always wrap. Please use a printWidth value greater than ${shortText.length}.`);
+      throw new Error(
+        `Test text will always wrap. Please use a printWidth value greater than ${
+          shortText.length
+        }.`
+      );
     }
     const longText = `["${veryLongString}", "${veryLongString}"];`;
     const longBeautifierResult = `["${veryLongString}",\n  "${veryLongString}"\n];`;
 
     const indentSize = 2;
     return Promise.all([
-      beautifyWithPrintWidth(unibeautify, shortText, wrapLineLength).then(results => {
-        expect(results).toBe(shortBeautifierResult);
-      }),
-      beautifyWithPrintWidth(unibeautify, longText, wrapLineLength).then(results => {
-        expect(results).toBe(longBeautifierResult);
-      })
+      beautifyWithPrintWidth(unibeautify, shortText, wrapLineLength).then(
+        results => {
+          expect(results).toBe(shortBeautifierResult);
+        }
+      ),
+      beautifyWithPrintWidth(unibeautify, longText, wrapLineLength).then(
+        results => {
+          expect(results).toBe(longBeautifierResult);
+        }
+      ),
     ]);
   });
 }
-function beautifyWithPrintWidth(unibeautify: Unibeautify, text: string, printWidth: number) {
+function beautifyWithPrintWidth(
+  unibeautify: Unibeautify,
+  text: string,
+  printWidth: number
+) {
   const indentSize = 2;
   return unibeautify.beautify({
     languageName: "JavaScript",
@@ -42,9 +54,9 @@ function beautifyWithPrintWidth(unibeautify: Unibeautify, text: string, printWid
         indent_char: " ",
         indent_size: indentSize,
         end_with_comma: false,
-        wrap_line_length: printWidth
-      }
+        wrap_line_length: printWidth,
+      },
     },
-    text
+    text,
   });
 }
