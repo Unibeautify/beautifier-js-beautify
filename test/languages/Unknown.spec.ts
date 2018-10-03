@@ -9,18 +9,18 @@ test(`should fail as an unknown language to JS Beautify`, () => {
     namespace: "test",
     since: "0.0.1",
     sublimeSyntaxes: [],
-    vscodeLanguages: []
+    vscodeLanguages: [],
   };
   unibeautify.loadLanguage(testLanguage);
   const testBeautifier = {
     ...beautifier,
     options: {
       [testLanguage.name]: true,
-    }
+    },
   };
   unibeautify.loadBeautifier(testBeautifier);
-  expect(unibeautify
-    .beautify({
+  expect(
+    unibeautify.beautify({
       languageName: testLanguage.name,
       options: {},
       text: "",

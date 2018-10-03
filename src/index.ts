@@ -1,5 +1,11 @@
 import { js_beautify, html_beautify, css_beautify } from "js-beautify";
-import { Beautifier, Language, BeautifierBeautifyData, DependencyType, NodeDependency } from "unibeautify";
+import {
+  Beautifier,
+  Language,
+  BeautifierBeautifyData,
+  DependencyType,
+  NodeDependency,
+} from "unibeautify";
 import * as readPkgUp from "read-pkg-up";
 import options from "./options";
 const { pkg } = readPkgUp.sync({ cwd: __dirname });
@@ -18,7 +24,7 @@ export const beautifier: Beautifier = {
       type: DependencyType.Node,
       name: "JS Beautify",
       package: "js-beautify",
-    }
+    },
   ],
   options: {
     // HTML
@@ -34,11 +40,13 @@ export const beautifier: Beautifier = {
     JSON: options.JSON,
     JSON5: options.JSON,
     // CSS
-    CSS: options.CSS
+    CSS: options.CSS,
   },
   beautify({ text, options, language, dependencies }: BeautifierBeautifyData) {
     return new Promise((resolve, reject) => {
-      const jsbeautify: JSBeautify = dependencies.get<NodeDependency>("JS Beautify").package;
+      const jsbeautify: JSBeautify = dependencies.get<NodeDependency>(
+        "JS Beautify"
+      ).package;
       try {
         switch (language.name) {
           case "JSON":
@@ -61,15 +69,13 @@ export const beautifier: Beautifier = {
           case "CSS":
             return resolve(jsbeautify.css_beautify(text, options));
           default:
-            throw (
-              new Error("Unknown language for JS Beautify: " + language)
-            );
+            throw new Error("Unknown language for JS Beautify: " + language);
         }
       } catch (error) {
         return reject(error);
       }
     });
-  }
+  },
 };
 
 export default beautifier;

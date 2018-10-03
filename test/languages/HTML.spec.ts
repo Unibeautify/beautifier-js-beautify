@@ -11,10 +11,10 @@ test("should successfully beautify HTML text", () => {
       options: {
         HTML: {
           indent_char: " ",
-          indent_size: 2
-        }
+          indent_size: 2,
+        },
       },
-      text
+      text,
     })
     .then(results => {
       expect(results).toBe(beautifierResult);

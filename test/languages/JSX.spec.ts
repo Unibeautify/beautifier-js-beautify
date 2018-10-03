@@ -23,10 +23,10 @@ test("should successfully beautify JSX text", () => {
       options: {
         JSX: {
           indent_char: " ",
-          indent_size: 2
-        }
+          indent_size: 2,
+        },
       },
-      text
+      text,
     })
     .then(results => {
       expect(results).toBe(beautifierResult);
@@ -59,10 +59,10 @@ test("should successfully beautify JSX text with wrap_line_length", () => {
         JSX: {
           indent_char: " ",
           indent_size: 2,
-          wrap_line_length: 40
-        }
+          wrap_line_length: 40,
+        },
       },
-      text
+      text,
     })
     .then(results => {
       expect(results).toBe(beautifierResult);

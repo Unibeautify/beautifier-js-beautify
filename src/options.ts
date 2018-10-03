@@ -1,4 +1,8 @@
-import { BeautifierOptions, OptionValues, BeautifierLanguageOptions } from "unibeautify";
+import {
+  BeautifierOptions,
+  OptionValues,
+  BeautifierLanguageOptions,
+} from "unibeautify";
 const commonOptions: BeautifierLanguageOptions = {
   indent_char: [
     ["indent_style"],
@@ -8,7 +12,7 @@ const commonOptions: BeautifierLanguageOptions = {
       } else if (options.indent_style === "space") {
         return " ";
       }
-    }
+    },
   ],
 };
 const options: BeautifierOptions = {
@@ -25,7 +29,7 @@ const options: BeautifierOptions = {
     unindent_chained_methods: [
       ["indent_chained_methods"],
       ({ indent_chained_methods: val }) =>
-        (val === true) ? false : ((val === false) ? true : val)
+        val === true ? false : val === false ? true : val,
     ],
     break_chained_methods: true,
     max_preserve_newlines: true,
@@ -64,8 +68,8 @@ const options: BeautifierOptions = {
     newline_between_rules: true,
     preserve_newlines: true,
     wrap_line_length: true,
-    end_with_newline: true
-  }
+    end_with_newline: true,
+  },
 };
 
 export default options;
