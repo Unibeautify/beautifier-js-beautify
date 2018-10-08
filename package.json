@@ -33,7 +33,7 @@
     "unibeautify": ">= 0.11.1"
   },
   "devDependencies": {
-    "@types/jest": "23.3.3",
+    "@types/jest": "23.3.4",
     "@types/js-beautify": "0.0.31",
     "@types/node": "10.11.4",
     "@types/read-pkg-up": "3.0.1",
