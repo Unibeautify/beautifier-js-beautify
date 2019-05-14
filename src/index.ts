@@ -8,7 +8,7 @@ import {
 } from "unibeautify";
 import * as readPkgUp from "read-pkg-up";
 import options from "./options";
-const { pkg } = readPkgUp.sync({ cwd: __dirname });
+const pkg = readPkgUp.sync({ cwd: __dirname })!.package;
 
 interface JSBeautify {
   js_beautify(js_source_text: string, options?: JsBeautifyOptions): string;
