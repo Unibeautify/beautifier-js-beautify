@@ -18,9 +18,7 @@ function testWithWrapLineLength(wrapLineLength: number) {
 
     if (shortText.length > wrapLineLength) {
       throw new Error(
-        `Test text will always wrap. Please use a printWidth value greater than ${
-          shortText.length
-        }.`
+        `Test text will always wrap. Please use a printWidth value greater than ${shortText.length}.`
       );
     }
     const longText = `["${veryLongString}", "${veryLongString}"];`;
