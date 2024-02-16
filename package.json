@@ -34,11 +34,11 @@
   },
   "devDependencies": {
     "@types/jest": "24.9.1",
-    "@types/js-beautify": "0.0.31",
+    "@types/js-beautify": "1.14.3",
     "@types/node": "12.20.55",
     "@types/read-pkg-up": "3.0.1",
     "jest": "24.9.0",
-    "js-beautify": "1.7.5",
+    "js-beautify": "1.15.1",
     "npm-run-all2": "5.0.2",
     "rimraf": "3.0.2",
     "ts-jest": "24.3.0",
